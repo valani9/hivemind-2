@@ -4,7 +4,7 @@ export interface GeminiEvent {
   id: string;
   title: string;
   slug: string;
-  description: string;
+  description: string | Record<string, unknown>;
   imageUrl?: string;
   type: 'binary' | 'categorical';
   category: string;
@@ -38,7 +38,7 @@ export interface GeminiContract {
   id: string;
   label: string;
   abbreviatedName?: string;
-  description: string;
+  description: string | Record<string, unknown>;
   ticker: string;
   instrumentSymbol: string;
   prices: {

@@ -28,7 +28,7 @@ export default function MarketExplorer() {
 
       const res = await fetch(`/api/gemini/events?${params}`);
       const data = await res.json();
-      const eventList = Array.isArray(data) ? data : data.events || [];
+      const eventList = Array.isArray(data) ? data : data.data || data.events || [];
       setEvents(eventList);
     } catch (err) {
       console.error('Failed to fetch events:', err);
@@ -55,7 +55,7 @@ export default function MarketExplorer() {
     fetch('/api/gemini/events/newly-listed')
       .then(r => r.json())
       .then(data => {
-        const items = Array.isArray(data) ? data : data.events || [];
+        const items = Array.isArray(data) ? data : data.data || data.events || [];
         setNewlyListed(new Set(items.map((e: GeminiEvent) => e.ticker)));
       })
       .catch(console.error);

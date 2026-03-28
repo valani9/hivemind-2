@@ -14,7 +14,7 @@ export default function LeaderboardPage() {
     fetch('/api/gemini/events/recently-settled')
       .then(r => r.json())
       .then(data => {
-        const events = Array.isArray(data) ? data : data.events || [];
+        const events = Array.isArray(data) ? data : data.data || data.events || [];
         setSettledEvents(events);
       })
       .catch(console.error)
